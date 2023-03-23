@@ -1,0 +1,64 @@
+<head>
+  <meta charset="utf-8" />
+  {{- $title := ( .Title ) -}} {{- $siteTitle := ( .Site.Title ) -}} {{- if .IsHome -}}
+  <title>{{ $siteTitle | lower }}</title>
+  {{- else -}}
+  <title>{{ $title | lower }} - {{ $siteTitle | lower }}</title>
+  {{- end -}}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Hi, I'm Rob. Please explore my website to see how I combine code and design to create intuitive &amp; thoughtful experiences." />
+  <meta property="og:image" content="{{ .Site.Params.og_image }}" />
+  {{ with .OutputFormats.Get "rss" -}} {{ printf `
+  <link rel="%s" type="%s" href="%s" title="%s" />
+  ` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }} {{ end -}}
+  <link id="theme" rel="stylesheet" type="text/css" media="screen" href="/css/light.css" />
+  <link rel="stylesheet" href="/css/hack-subset.css">
+  <link rel="icon" href="/favicon/favicon.ico" />
+  <script>
+    function setTheme() {
+      // check if  user has a preference saved
+      if (localStorage.getItem("theme")) {
+        // if the user has a preference saved, use it
+        if (localStorage.getItem("theme") == "dark") {
+          document.getElementById("theme").href = "/css/dark.css";
+          document.getElementById("theme-toggle").innerHTML = "light theme";
+        } else {
+          document.getElementById("theme").href = "/css/light.css";
+          document.getElementById("theme-toggle").innerHTML = "dark theme";
+        }
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // if the user has no preference saved, but their OS is set to dark mode, use dark mode
+        document.getElementById("theme").href = "/css/dark.css";
+        document.getElementById("theme-toggle").innerHTML = "light theme";
+      } else {
+        // otherwise, use light mode
+        document.getElementById("theme").href = "/css/light.css";
+        document.getElementById("theme-toggle").innerHTML = "dark theme";
+      }
+    }
+
+    // set the theme on initial load
+    onload = setTheme;
+
+    function toggleTheme() {
+      // toggle the theme
+      var theme = document.getElementById("theme");
+      var themeToggle = document.getElementById("theme-toggle");
+      if (theme.getAttribute("href") == "/css/light.css") {
+        themeToggle.innerHTML = "light theme";
+        theme.href = "/css/dark.css";
+      } else {
+        themeToggle.innerHTML = "dark theme";
+        theme.href = "/css/light.css";
+      }
+
+      // save the user's preference
+      if (theme.getAttribute("href") == "/css/dark.css") {
+        localStorage.setItem("theme", "dark");
+        console.log("saved dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    }
+  </script>
+</head>

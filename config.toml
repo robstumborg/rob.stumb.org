@@ -1,0 +1,21 @@
+baseURL = "https://rob.stumb.org"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "Rob Stumborg"
+theme = "robstumborg"
+pygmentsstyle = "dracula"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+[permalinks]
+    post = "/notes/:slug"
+
+[[menu.main]]
+name = "my work"
+url = "/work"
+weight = 1
+
+# [[menu.main]]
+# name = "code"
+# url = "/code"
+# weight = 2

@@ -1,0 +1,25 @@
+{{ define "main" }}
+<h1 style="text-align: center">my work</h1>
+<ul class="projects">
+  {{- range .Data.Pages -}}
+  <li class="project">
+    <div class="project-content">
+      <div>
+        <p class="project-overline">{{ .Params.Type }}</p>
+        <h3 class="project-title">{{.Title}}</h3>
+        <div class="project-description">
+          <p>{{ .Params.Blurb }}</p>
+          <!-- <a href="{{.RelPermalink}}">see details</a> -->
+        </div>
+        <ul class="project-tech-list">
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <div class="project-image">
+      <img src="{{.Params.Img}}" style="max-width: 100%; display: block; position: static" />
+    </div>
+  </li>
+  {{- end -}}
+</ul>
+{{ end }}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    <div class="content">
+      {{ partial "header.html" . }}
+      <main>
+        <div class="site-description">
+          {{- if isset .Site.Params "subtitle" -}}
+          <p>{{ .Site.Params.Subtitle | markdownify }}</p>
+          {{- end -}}
+        </div>
+        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }} {{ $paginator := .Paginate (where
+        $pages "Params.hidden" "ne" true) }} {{ template "partials/paginator.html" . }}
+        <div class="intro">
+          <p>
+            Hi, I'm Rob, product designer at <a href="https://costdetect.com" target="_blank">CostDetect↗</a>. With a
+            love for both code and aesthetics, I'm passionate about bridging the gap between engineering &amp; design to
+            craft thoughtful user experiences.
+          </p>
+        </div>
+        <hr />
+        <div class="about">
+          <div class="blurb">
+            <strong>about me</strong>
+            <p>
+              beginning in middle school, i embarked on a journey in technology &amp; design that ultimately led me to
+              become a product designer. i'd be thrilled to share my story with you. let's connect!
+            </p>
+          </div>
+          <div class="open-source">
+            <strong>open source</strong>
+            <p>i'm an advocate of open-source software and have contributed to various projects, including:</p>
+
+            <ul>
+              <li><a href="https://soju.im/" target="_blank">soju</a></li>
+              <li><a href="https://php.net/" target="_blank">php</a></li>
+              <li><a href="https://reactnative.dev/" target="_blank">react native</a></li>
+              <li><a href="https://www.visidata.org" target="_blank">visidata</a></li>
+              <li><a href="https://gitea.io/" target="_blank">gitea</a></li>
+              <li><a href="https://vuejs.org/" target="_blank">vue</a></li>
+              <li><a href="https://swaywm.org/" target="_blank">sway</a></li>
+            </ul>
+          </div>
+        </div>
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+  </body>
+</html>
