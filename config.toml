@@ -16,6 +16,11 @@ url = "/work"
 weight = 1
 
 # [[menu.main]]
+# name = "notes"
+# url = "/notes"
+# weight = 2
+
+# [[menu.main]]
 # name = "code"
 # url = "/code"
-# weight = 2
+# weight = 3

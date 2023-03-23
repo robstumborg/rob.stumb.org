@@ -5,13 +5,6 @@
     <div class="content">
       {{ partial "header.html" . }}
       <main>
-        <div class="site-description">
-          {{- if isset .Site.Params "subtitle" -}}
-          <p>{{ .Site.Params.Subtitle | markdownify }}</p>
-          {{- end -}}
-        </div>
-        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }} {{ $paginator := .Paginate (where
-        $pages "Params.hidden" "ne" true) }} {{ template "partials/paginator.html" . }}
         <div class="intro">
           <p>
             Hi, I'm Rob, product designer at <a href="https://costdetect.com" target="_blank">CostDetect↗</a>. With a

@@ -1,5 +1,5 @@
 ---
-title: moo
+title: "full wayland setup on arch linux"
 date: "2022-07-03"
 ---
 

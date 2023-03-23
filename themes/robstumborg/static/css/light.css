@@ -135,51 +135,12 @@ footer {
   margin-top: 1em;
 }
 
-.title h1 {
+article h1 {
   margin-bottom: 0;
 }
 
-time {
-  color: grey;
-}
-
-.callout {
-  background-color: dodgerblue;
-  color: #fff;
-  padding: 1em;
-}
-
-.callout p {
-  margin: 0;
-}
-
-.callout a {
-  border-bottom: 3px solid #fff;
-}
-
-.callout a:hover {
-  background-color: #fff;
-  color: dodgerblue;
-}
-
-.site-description {
-  display: flex;
-  justify-content: space-between;
-}
-
-.tags li::before {
-  content: "🏷 ";
-}
-
-svg {
-  max-height: 15px;
-}
-
-.draft-label {
-  text-decoration: none;
-  padding: 2px 4px;
-  border-radius: 4px;
-  margin-left: 6px;
+article .date {
+  font-size: 12px;
 }
 
 .highlight {
@@ -279,11 +240,6 @@ a:hover {
 }
 
 .site-description a:hover {
-  color: black;
-}
-
-.tags a:hover {
-  background-color: #98c379;
   color: black;
 }
 
@@ -471,4 +427,21 @@ a:hover {
   margin: 25px 0px 10px;
   padding: 0px;
   list-style: none;
+}
+
+.posts {
+  list-style: none;
+  padding-left: 2ch;
+}
+
+.posts li {
+  text-indent: -2ch;
+}
+
+.icon:hover {
+  background: transparent;
+}
+
+.icon {
+  color: #ede9e9;
 }
