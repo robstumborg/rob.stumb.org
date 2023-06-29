@@ -3,9 +3,22 @@ languageCode = "en-us"
 defaultContentLanguage = "en"
 title = "Rob Stumborg"
 theme = "robstumborg"
-pygmentsstyle = "dracula"
-pygmentscodefences = true
-pygmentscodefencesguesssyntax = true
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    noHl = false
+    style = 'xcode'
+    tabWidth = 4
 
 [permalinks]
     post = "/notes/:slug"
@@ -15,12 +28,12 @@ name = "my work"
 url = "/work"
 weight = 1
 
-# [[menu.main]]
-# name = "notes"
-# url = "/notes"
-# weight = 2
+[[menu.main]]
+name = "notes"
+url = "/notes"
+weight = 2
 
-# [[menu.main]]
-# name = "code"
-# url = "/code"
-# weight = 3
+[[menu.main]]
+name = "repos"
+url = "/repos"
+weight = 3
