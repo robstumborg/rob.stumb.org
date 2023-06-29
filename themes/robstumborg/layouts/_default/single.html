@@ -1,8 +1,14 @@
 {{ define "main" }}
 <main>
   <article>
-    <h1 class="title">{{.Title}}</h1>
-    {{ if .Date}} <spain class="date">{{ dateFormat "Jan 2, 2006" .Date | lower }}</span> {{ end }}
+    {{ if .Date}}
+    <div style="font-size: 12px; margin-top: 10px; text-align: end;">
+      <span>{{ dateFormat "Jan 2, 2006" .Date | lower }}</span>
+    </div>
+    {{ end }}
+    <div style="text-align: center;">
+    <div class="page-title post-title">{{.Title}}</div>
+    </div>
     <section class="body">{{ .Content }}</section>
   </article>
 </main>

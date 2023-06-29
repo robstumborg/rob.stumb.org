@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8" />
   {{- $title := ( .Title ) -}} {{- $siteTitle := ( .Site.Title ) -}} {{- if .IsHome -}}
-  <title>{{ $siteTitle | lower }}</title>
+  <title>{{ $siteTitle }}</title>
   {{- else -}}
   <title>{{ $title | lower }} - {{ $siteTitle | lower }}</title>
   {{- end -}}

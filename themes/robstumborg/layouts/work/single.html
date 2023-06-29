@@ -1,29 +1,10 @@
 {{ define "main" }}
 <main>
-	<article>
-		{{ if isset .Params "tldr" }}
-		<div class="tldr">
-			<strong>tl;dr:</strong>
-			{{ .Params.tldr }}
-		</div>{{ end }}
-
-		<section class="body">
-			{{ .Content }}
-		</section>
-
-		<div class="post-tags">
-			{{ if ne .Type "page" }}
-			{{ if gt .Params.tags 0 }}
-			<nav class="nav tags">
-				<ul class="tags">
-					{{ range .Params.tags }}
-					<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
-					{{ end }}
-				</ul>
-			</nav>
-			{{ end }}
-			{{ end }}
-		</div>
-	</article>
+  <article>
+    <div style="text-align: center;">
+    <div class="page-title post-title">{{.Title}}</div>
+    </div>
+    <section class="body">{{ .Content }}ajksdfhaskdfhj</section>
+  </article>
 </main>
 {{ end }}
