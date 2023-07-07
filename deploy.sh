@@ -22,6 +22,7 @@ repos[rateprowler]=$HOME/play/rateprowler
 repos[commentgpt]=$HOME/play/commentgpt
 repos[tld]=$HOME/play/tld
 repos[ip-converter]=$HOME/play/ip-converter
+repos[rob.stumb.org]=$HOME/work/rob.stumb.org
 
 # generate html for each repo
 args=""
