@@ -1,0 +1,9 @@
+{{ define "main" }}
+<section class="section blog">
+  <article class="section_content">
+    <div class="note_date">{{ dateFormat "Jan 2, 2006" .Date }}</div>
+    <div class="note_title">{{.Title}}</div>
+    <section class="body">{{ .Content }}</section>
+  </article>
+</section>
+{{ end }}

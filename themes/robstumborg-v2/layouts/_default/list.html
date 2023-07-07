@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="section blog">
+  <div class="section_content">
+    <div class="notes">
+      {{- range .Data.Pages -}} {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
+      <div class="note">
+        <div class="note_head">
+          <div class="note_title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+          <div class="note_date">{{ dateFormat "Jan 2, 2006" .Date }}</div>
+        </div>
+        <div class="note_summary">{{ .Summary }}</div>
+      </div>
+      {{- end -}} {{- end -}}
+    </div>
+  </div>
+</section>
+{{ end }}

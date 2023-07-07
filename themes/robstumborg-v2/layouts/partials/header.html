@@ -1,0 +1,20 @@
+<header>
+  <div class="nav-menu">
+    <ul>
+      {{ $currentPage := . }}
+      {{ $section := .Site.GetPage $currentPage.Section }}
+      {{ range .Site.Menus.main }}
+        <li>
+          <a class="{{ if $section.IsMenuCurrent "main" . }}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+  <div class="switch-wrapper">
+    <div class="sun"></div>
+    <div class="toggle-wrapper">
+      <input id="switch" type="checkbox" /> <label for="switch" id="toggle">Toggle</label>
+    </div>
+    <div class="moon"></div>
+  </div>
+</header>
