@@ -1,15 +1,30 @@
 <header>
   <div class="nav-menu">
     <ul>
-      {{ $currentPage := . }}
-      {{ $section := .Site.GetPage $currentPage.Section }}
       {{ range .Site.Menus.main }}
-        <li>
-          <a class="{{ if $section.IsMenuCurrent "main" . }}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
-        </li>
+      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
       {{ end }}
     </ul>
   </div>
+
+  <div class="mobile-menu">
+    <span class="mobile-menu-circle"></span>
+    <a href="#" class="mobile-menu-link">
+      <span class="mobile-menu-icon">
+        <span class="mobile-menu-line mobile-menu-line-1"></span>
+        <span class="mobile-menu-line mobile-menu-line-2"></span>
+        <span class="mobile-menu-line mobile-menu-line-3"></span>
+      </span>
+    </a>
+  </div>
+  <div class="mobile-menu-overlay">
+    <ul>
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+
   <div class="switch-wrapper">
     <div class="sun"></div>
     <div class="toggle-wrapper">

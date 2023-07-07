@@ -1,26 +1,34 @@
 $(function () {
-  const prefersDarkMode = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches;
   const body = document.querySelector("body");
   const toggle = document.getElementById("toggle");
   const input = document.getElementById("switch");
 
-  if (prefersDarkMode) {
+  // Check if the user's preference is stored in local storage
+  const storedPreference = localStorage.getItem("themePreference");
+
+  // Set the theme based on the stored preference or the user's OS/browser settings
+  if (
+    storedPreference === "dark" ||
+    (!storedPreference &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
     input.checked = true;
     body.classList.add("night");
   }
 
+  // Theme toggle
   toggle.addEventListener("click", function () {
     const isChecked = input.checked;
     if (isChecked) {
       body.classList.remove("night");
+      localStorage.setItem("themePreference", "light");
     } else {
       body.classList.add("night");
+      localStorage.setItem("themePreference", "dark");
     }
   });
 
-  const introHeight = document.querySelector(".intro").offsetHeight;
+  const introHeight = document.querySelector(".switch-wrapper").offsetHeight;
   const topButton = document.getElementById("top-button");
   const $topButton = $("#top-button");
 
@@ -40,26 +48,29 @@ $(function () {
     $("html, body").animate({ scrollTop: 0 }, 500);
   });
 
-  const hand = document.querySelector(".emoji.wave-hand");
+  // only do hand wave on /
+  if (window.location.pathname === "/") {
+    const hand = document.querySelector(".emoji.wave-hand");
 
-  function waveOnLoad() {
-    hand.classList.add("wave");
+    function waveOnLoad() {
+      hand.classList.add("wave");
+      setTimeout(function () {
+        hand.classList.remove("wave");
+      }, 2000);
+    }
+
     setTimeout(function () {
+      waveOnLoad();
+    }, 1000);
+
+    hand.addEventListener("mouseover", function () {
+      hand.classList.add("wave");
+    });
+
+    hand.addEventListener("mouseout", function () {
       hand.classList.remove("wave");
-    }, 2000);
+    });
   }
-
-  setTimeout(function () {
-    waveOnLoad();
-  }, 1000);
-
-  hand.addEventListener("mouseover", function () {
-    hand.classList.add("wave");
-  });
-
-  hand.addEventListener("mouseout", function () {
-    hand.classList.remove("wave");
-  });
 
   window.sr = ScrollReveal({
     reset: false,
@@ -74,4 +85,12 @@ $(function () {
   sr.reveal(".experience", { viewFactor: 0.2 });
   sr.reveal(".featured-projects", { viewFactor: 0.1 });
   sr.reveal(".other-projects", { viewFactor: 0.05 });
+
+  // mobile menu
+  $(".mobile-menu-link").click(function (e) {
+    e.preventDefault();
+
+    $(".mobile-menu-overlay").toggleClass("open");
+    $(".mobile-menu").toggleClass("open");
+  });
 });
