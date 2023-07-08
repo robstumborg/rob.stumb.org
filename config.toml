@@ -3,10 +3,13 @@ languageCode = "en-us"
 defaultContentLanguage = "en"
 title = "Rob Stumborg"
 theme = "robstumborg-v2"
+summaryLength = 10
+
 [params]
   lookingForWork = true
 
 [markup]
+  defaultMarkdownHandler = 'goldmark'
   [markup.highlight]
     anchorLineNos = false
     codeFences = true
@@ -21,6 +24,10 @@ theme = "robstumborg-v2"
     noHl = false
     style = 'xcode'
     tabWidth = 4
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
 
 [permalinks]
     post = "/notes/:slug"
