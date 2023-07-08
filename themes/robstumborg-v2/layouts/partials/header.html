@@ -1,5 +1,5 @@
 <header>
-    <div class="nav-menu">
+    <div class="nav_menu">
     <ul>
       {{ range .Site.Menus.main }}
       <li><a href="{{ .URL }}">{{ .Name }}</a></li>
@@ -7,17 +7,17 @@
     </ul>
   </div>
 
-  <div class="mobile-menu">
-    <span class="mobile-menu-circle"></span>
-    <a href="#" class="mobile-menu-link">
-      <span class="mobile-menu-icon">
-        <span class="mobile-menu-line mobile-menu-line-1"></span>
-        <span class="mobile-menu-line mobile-menu-line-2"></span>
-        <span class="mobile-menu-line mobile-menu-line-3"></span>
+  <div class="mobile_menu">
+    <span class="mobile_menu_circle"></span>
+    <a href="#" class="mobile_menu_link">
+      <span class="mobile_menu_icon">
+        <span class="mobile_menu_line mobile_menu_line_1"></span>
+        <span class="mobile_menu_line mobile_menu_line_2"></span>
+        <span class="mobile_menu_line mobile_menu_line_3"></span>
       </span>
     </a>
   </div>
-  <div class="mobile-menu-overlay">
+  <div class="mobile_menu_overlay">
     <ul>
       {{ range .Site.Menus.main }}
       <li><a href="{{ .URL }}">{{ .Name }}</a></li>

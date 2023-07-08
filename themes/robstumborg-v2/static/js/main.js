@@ -88,11 +88,11 @@ $(function () {
   sr.reveal(".other-projects", { viewFactor: 0.05 });
 
   // mobile menu
-  $(".mobile-menu-link").click(function (e) {
+  $(".mobile_menu_link").click(function (e) {
     e.preventDefault();
 
-    $(".mobile-menu-overlay").toggleClass("open");
-    $(".mobile-menu").toggleClass("open");
+    $(".mobile_menu_overlay").toggleClass("open");
+    $(".mobile_menu").toggleClass("open");
     $("html").toggleClass("hidden");
   });
 });
