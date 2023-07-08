@@ -1,5 +1,11 @@
 {{ define "main" }}
 <section class="section blog">
+  {{ if eq .Params.toc true }}
+  <div class="table_of_contents">
+    <div class="table_of_contents_title">Table of Contents</div>
+    <div>{{ .TableOfContents }}</div>
+  </div>
+  {{ end }}
   <article class="section_content">
     <div class="note_date">{{ dateFormat "Jan 2, 2006" .Date }}</div>
     <div class="note_title">{{.Title}}</div>
