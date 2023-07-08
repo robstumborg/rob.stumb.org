@@ -2,7 +2,7 @@ baseURL = "https://rob.stumb.org"
 languageCode = "en-us"
 defaultContentLanguage = "en"
 title = "Rob Stumborg"
-theme = "robstumborg"
+theme = "robstumborg-v2"
 [params]
   lookingForWork = true
 
