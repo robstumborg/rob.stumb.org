@@ -10,6 +10,7 @@
           I'm <span class="name">Rob Stumborg</span>, a full stack developer. With a love for both code and aesthetics,
           I'm passionate about bridging the gap between engineering & design to craft thoughtful user experiences.
         </h2>
+        {{ if eq .Site.Params.lookingForWork true }}
         <a class="status" href="/cv">
           <div class="status_light">
             <div class="status_light_ring"></div>
@@ -17,6 +18,7 @@
           </div>
           <div class="status_message">Currently seeking full-time opportunities!</div>
         </a>
+        {{ end }}
       </div>
       {{ partial "footer.html" . }}
     </div>

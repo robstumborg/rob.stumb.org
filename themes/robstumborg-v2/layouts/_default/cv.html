@@ -34,6 +34,15 @@
             Hobbies keep me grounded and remind me to approach my work with a fresh perspective, infusing projects with
             a touch of nature's beauty. They serve as a source of constant source of inspiration.
           </p>
+          {{ if eq .Site.Params.lookingForWork true }}
+          <a class="status" href="/cv">
+            <div class="status_light">
+              <div class="status_light_ring"></div>
+              <div class="status_light_led"></div>
+            </div>
+            <div class="status_message">Currently seeking full-time opportunities!</div>
+          </a>
+          {{ end }}
         </div>
       </section>
       <section class="section skills">

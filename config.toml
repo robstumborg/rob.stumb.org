@@ -3,6 +3,8 @@ languageCode = "en-us"
 defaultContentLanguage = "en"
 title = "Rob Stumborg"
 theme = "robstumborg"
+[params]
+  lookingForWork = true
 
 [markup]
   [markup.highlight]
