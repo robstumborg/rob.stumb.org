@@ -33,8 +33,8 @@ summaryLength = 10
     post = "/notes/:slug"
 
 [[menu.main]]
-name = "my work"
-url = "/work"
+name = "home"
+url = "/"
 weight = 1
 
 [[menu.main]]
@@ -42,7 +42,12 @@ name = "notes"
 url = "/notes"
 weight = 2
 
+# [[menu.main]]
+# name = "code"
+# url = "/repos"
+# weight = 3
+
 [[menu.main]]
-name = "repos"
-url = "/repos"
-weight = 3
+name = "cv"
+url = "/cv"
+weight = 4
