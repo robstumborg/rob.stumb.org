@@ -22,7 +22,7 @@ summaryLength = 10
     lineNumbersInTable = true
     noClasses = true
     noHl = false
-    style = 'xcode'
+    style = 'onedark'
     tabWidth = 4
   [markup.tableOfContents]
     endLevel = 3
