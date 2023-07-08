@@ -118,13 +118,14 @@ html {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: #fff; */
-  /* color: #444452; */
   font-family: Apercu, "Source Sans Pro", system, system-ui, -apple-system,
     BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   width: 100%;
   overflow-x: hidden;
+}
+.hidden {
+   overflow: hidden;
 }
 body.night,
 html.night {
@@ -151,6 +152,7 @@ html.night .switch-wrapper .moon {
   background: url(../img/switch/moon-white.svg) no-repeat center;
   background-size: 100%;
 }
+
 body.night .experience .job_time,
 body.night .blog .note_date,
 body.night .blog .note_title,
@@ -182,6 +184,10 @@ body.night .mobile-menu-overlay {
 
 body.night .mobile-menu-overlay {
   background-image: linear-gradient(120deg, #1d2330 0%, #1f2835 100%);
+}
+
+body.night .nav-menu ul li {
+  border-right: 1px solid #1d2330;
 }
 
 a {
@@ -423,7 +429,7 @@ strong {
   -ms-flex-align: center;
   align-items: center;
   position: absolute;
-  top: 20px;
+  top: 35px;
   right: 30px;
 }
 @media screen and (max-width: 480px) {
@@ -483,15 +489,6 @@ strong {
   height: 19px;
   background: #fff;
   border-radius: 100%;
-}
-
-header .nav-menu {
-  padding: 20px 100px;
-}
-@media screen and (max-width: 850px) {
-  header .nav-menu {
-    display: none;
-  }
 }
 
 /* mobile menu start */
@@ -599,7 +596,61 @@ header .nav-menu {
 
 /* mobile menu done */
 
-header .nav-menu a {
+header .nav-menu {
+  padding: 40px 100px;
+}
+@media screen and (max-width: 850px) {
+  header .nav-menu {
+    display: none;
+  }
+
+  header .mobile-menu {
+    display: block;
+  }
+
+  header .switch-wrapper {
+    top: 6px;
+  }
+
+}
+
+.nav-menu ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transform: skew(-25deg);
+}
+.nav-menu ul li {
+  background: #6978d0;
+  float: left;
+  border-right: 1px solid #e7e7e7;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  color: #e7e7e7;
+  font-weight: bolder;
+  transition: all 0.3s linear;
+}
+.nav-menu ul li:first-child {
+  border-radius: 1px 0 0 1px;
+}
+.nav-menu ul li:last-child {
+  border-right: none;
+  border-radius: 0 1px 1px 0;
+}
+.nav-menu ul li:hover {
+  background: #4346d0;
+  color: #e7e7e7;
+}
+.nav-menu ul li a {
+  display: block;
+  padding: 0.5em 2em;
+  color: inherit;
+  text-decoration: none;
+  transform: skew(25deg);
+}
+
+/* header .nav-menu a {
   position: relative;
   display: inline-block;
   color: #6978d0 !important;
@@ -660,7 +711,7 @@ header .nav-menu ul li {
 
 header .nav-menu ul li:last-child {
   margin-right: 0;
-}
+} */
 
 .intro {
   padding: 120px 100px;
@@ -679,17 +730,7 @@ header .nav-menu ul li:last-child {
 }
 @media screen and (max-width: 630px) {
   .intro {
-    padding: 120px 70px;
-  }
-}
-@media screen and (max-width: 550px) {
-  .intro {
-    padding: 120px 50px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .intro {
-    padding: 70px 50px;
+    padding: 400px 70px;
   }
 }
 .intro_hello,
@@ -982,7 +1023,7 @@ body.night .intro_tagline {
   -ms-flex-align: center;
   align-items: center;
   font-size: 1.1rem;
-  margin-top: 70px;
+  margin-top: 50px;
 }
 .status_light {
   width: 30px;
@@ -1424,4 +1465,10 @@ article .note_title {
 article .note_date {
   font-size: 0.6rem;
   font-weight: 700;
+}
+
+pre {
+  overflow-x: auto;
+  white-space: no-wrap;
+  padding: 10px;
 }

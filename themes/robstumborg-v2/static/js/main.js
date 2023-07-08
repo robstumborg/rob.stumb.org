@@ -48,8 +48,8 @@ $(function () {
     $("html, body").animate({ scrollTop: 0 }, 500);
   });
 
-  // only do hand wave on /
-  if (window.location.pathname === "/") {
+  // Emoji hand wave
+  if (document.querySelector(".emoji.wave-hand")) {
     const hand = document.querySelector(".emoji.wave-hand");
 
     function waveOnLoad() {
@@ -72,6 +72,7 @@ $(function () {
     });
   }
 
+  // CV animations
   window.sr = ScrollReveal({
     reset: false,
     duration: 600,
@@ -92,5 +93,6 @@ $(function () {
 
     $(".mobile-menu-overlay").toggleClass("open");
     $(".mobile-menu").toggleClass("open");
+    $("html").toggleClass("hidden");
   });
 });
