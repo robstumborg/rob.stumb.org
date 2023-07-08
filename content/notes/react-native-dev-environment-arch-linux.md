@@ -7,33 +7,33 @@ Quick notes on how I configure my React Native development environment on Arch L
 
 ## Install Genymotion (optional: xwayland if using wayland)
 
-```sh
+```shell
 paru -S genymotion 
 sudo pacman -S xorg-xwayland
 ```
 
 ## Install Android SDK tools
 
-```sh
+```shell
 paru -S android-sdk-platform-tools android-sdk-cmdline-tools-latest
 ```
 
 ## Accept Android SDK licenses
 
-```sh
+```shell
 yes | sudo sdkmanager --licenses
 ```
 
 ## Configure Java environment
 
-```sh
+```shell
 sudo pacman -S jre11-openjdk
 archlinux-java set java-11-openjdk
 ```
 
 ## Useful commands
 
-```sh
+```shell
 QT_QPA_PLATFORM=xcb genymotion
 adb devices
 npx react-native run-android --deviceId=192.168.56.101:5555

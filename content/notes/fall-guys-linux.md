@@ -30,7 +30,7 @@ default location is `~/Games` rather than `~/games`
 Edit `~/.config/legendary/config.ini`
 
 Mine looks like:
-```
+```dosini
 [Legendary]
 disable_update_check=false
 disable_update_notice=true

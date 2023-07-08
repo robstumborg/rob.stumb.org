@@ -1,6 +1,7 @@
 ---
 title: "HTTP API testing with Neovim + tmux + HTTPie"
 date: "2023-04-14"
+toc: true
 ---
 
 tl;dr [demo video](#demo)
