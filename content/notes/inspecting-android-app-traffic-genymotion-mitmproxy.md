@@ -1,16 +1,18 @@
 ---
-title: inspecting android app traffic w/ genymotion + mitmproxy + frida
+title: Inspecting Android app traffic w/ Genymotion + mitmproxy + Frida
 date: "2021-05-17"
-description: getting setup to sniff android app traffic w/ genymotion + mitmproxy
+description: getting setup to sniff Android app traffic w/ genymotion + mitmproxy
 ---
 
-## requirements
+Step-by-step guide on setting up a system to sniff Android app traffic using Genymotion, mitmproxy, and Frida.
 
-- virtualbox
-- genymotion
+## Requirements
+
+- VirtualBox
+- Genymotion
 - mitmproxy
-- frida
-- android tools
+- Frida
+- Android tools
 
 ```shell
 pacman -S virtualbox mitmproxy android-tools
@@ -21,42 +23,49 @@ yay -S genymotion
 ```shell
 pip install Frida frida-tools
 ```
-## launch genymotion and create an android vm
+## Launch genymotion and create an android vm
 
-select 'bridge' network mode when creating the vm in genymotion
+Select 'bridge' network mode when creating the vm in genymotion
 
-## launch mitmproxy on the host machine
+## Launch mitmproxy on the host machine
 
-## enable the proxy on android
+```shell
+mitmproxy
+```
+
+## Enable the proxy on Android
 ```shell
 adb shell settings put global http_proxy <ip>:<port>
 ```
-the default port for mitmproxy is 8080
 
-if you want to disable the proxy, use the following:
+The default port for mitmproxy is 8080
+
+If you want to disable the proxy, use the following:
 ```shell
 adb shell settings put global http_proxy :0
 ```
 
-<sup>note: disabling this way will only work if it was enabled via adb initially</sup>
+<sup>Note: disabling this way will only work if it was enabled via adb initially</sup>
 
-## install your mitmproxy ssl certificate on android
+## Install your mitmproxy ssl certificate on Android
 
-on the android vm, browse to `mitm.it`, download the certificate for android, and install it via android settings (this is a bit different in each version of android) 
+On the Android vm, browse to `mitm.it`, download the certificate for Android, and install it via Android settings (this
+is a bit different in each version of Android) 
 
-note: you can do this via adb, but I find it to be more tedious
+Note: you can do this via adb, but I find it to be more tedious
 
-now you should be able to inspect all of the https traffic from your android device in mitmproxy, but some apps use certificate pinning. there are a few ways around this, I like using [frida](https://frida.re/)
+Now you should be able to inspect all of the https traffic from your Android device in mitmproxy, but some apps use
+certificate pinning. There are a few ways around this, I like using [frida](https://frida.re/)
 
-magisk is a solution as well but it requires a more specific android environment, and is more tedious to use
+Magisk is a solution as well but it requires a more specific Android environment, and is more tedious to use
 
-## check the cpu arch of your android vm (likely x86)
+## Check the cpu arch of your Android VM (likely x86)
 ```shell
 adb shell getprop ro.product.cpu.abi
 ```
-## download/install/run frida server on the android vm
+## Download/install/run frida server on the Android vm
 
-head to https://github.com/frida/frida/releases and find frida-server for your vm's architecture
+Head to https://github.com/frida/frida/releases and find frida-server for your vm's architecture
 
 ```shell
 wget https://github.com/frida/frida/releases/download/14.2.18/frida-server-14.2.18-android-x86.xz
@@ -66,7 +75,7 @@ adb shell chmod 755 /data/local/tmp/frida-server
 adb shell /data/local/tmp/frida-server &
 ```
 
-on a physical device, place the frida-server binary, then:
+On a physical device, place the frida-server binary, then:
 
 ```shell
 adb shell
@@ -74,16 +83,17 @@ su
 ./data/local/tmp/frida-server &
 ```
 
-## list running processes on your vm
+## List processes running on your Android system
 ```shell
 frida-ps -U -a
 ```
-## inject code into a specific process
+
+## Inject code into a specific process
 ```shell
 frida -U -f com.process.name -l ssl.js -–no-pause
 ```
-you can find various examples for this over @ https://codeshare.frida.re
+You can find various examples for this over @ https://codeshare.frida.re
 
 e.g. https://codeshare.frida.re/@sowdust/universal-android-ssl-pinning-bypass-2/
 
-have fun!
+Have fun!

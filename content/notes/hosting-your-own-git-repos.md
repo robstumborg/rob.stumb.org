@@ -1,14 +1,16 @@
 ---
-title: host your own git repos
+title: Host your own git repos
 date: "2022-07-02"
 ---
 
-requirements:
-- git
+A quick note on how to host your own git repos using git-http-backend proxied via nginx.
+
+Requirements:
+- Git
 - nginx
 - fcgiwrap
 
-## create a user for git
+## create a user for Git
 
 ```shell
 useradd git
@@ -43,6 +45,7 @@ git init --bare reponame.git
 cd reponame.git
 ```
 
-w/ this very basic setup the git repo is shared publicly via http. you can configure basic http auth using nginx and push to the repo w/ http, but I prefer using ssh to push.
+With this very basic setup, the Git repo is shared publicly via HTTP. You can configure basic HTTP auth using nginx and
+push to the repo with HTTP, but I prefer using SSH to push.
 
-have fun!
+Have fun!

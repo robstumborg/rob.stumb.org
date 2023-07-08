@@ -1,22 +1,22 @@
 ---
-title: manage separate git identities
+title: Manage separate git identities
 date: "2022-07-03"
 ---
 
-if you work on a lot of different projects using git, it can be tricky to manage
-identities and easy to mistakenly make commits w/ your default user information.
-creating a simple git alias for managing git identities can help.
+If you work on a lot of different projects using Git, it can be tricky to manage
+identities and easy to mistakenly make commits with your default user information.
+creating a simple Git alias for managing Git identities can help.
 
-first, configure git so each repository requires its own user configuration in
+First, configure Git so each repository requires its own user configuration in
 order to make commits
 
 ```shell
 git config --global user.useConfigOnly true
 ```
 
-now, set up an `id` alias in your `.gitconfig` file
+Now, set up an `id` alias in your `.gitconfig` file
 
-```
+```dosini
 [alias]
     id = "!f() { \
             git config user.name \"$(git config user.$1.name)\"; \
@@ -36,7 +36,7 @@ now, set up an `id` alias in your `.gitconfig` file
         }; f"
 ```
 
-now you're able to set up individual git identities, for example:
+Now you're able to set up individual git identities, for example:
 
 ```shell
 git config --global user.rob.name "Rob Stumborg"
@@ -45,20 +45,20 @@ git config --global user.rob.signingkey "BB38364C45EF3D27"
 git config --global user.rob.sshkey "rstu"
 ```
 
-signingkey is the gpg fingerprint to be used, sshkey is the name of a private
-ssh key file stored in ~/.ssh. e.g. `~/.ssh/rstu`. gpg/ssh keys are optional.
+`signingkey` is the GPG fingerprint to be used, `sshkey` is the name of a private
+SSh key file stored in ~/.ssh. e.g. `~/.ssh/rstu`. GPG/SSH keys are optional.
 
-now when you're working in a git repo and try to commit something, it won't work
-until you've chosen an identity to be used for that specific repository. this
-can be done using the git alias we've just created:
+Now when you're working in a Git repo and try to commit something, it won't work
+until you've chosen an identity to be used for that specific repository. This
+can be done using the Git alias we've just created:
 
-```
+```shell
 git id rob
 ```
 
-now the commits you make in that repo will be using that identity.
+Now the commits you make in that repo will be using that identity.
 
-you can add as many identities as you'd like.
+You can add as many identities as you'd like.
 
-have fun!
+Have fun!
 

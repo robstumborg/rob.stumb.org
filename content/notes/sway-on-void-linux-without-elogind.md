@@ -1,18 +1,17 @@
 ---
-title: sway on void linux without elogind
+title: Sway on Void Linux without elogind
 date: "2022-08-14"
 ---
 
-these notes don't cover configuring sway, your terminal, etc. this is a simple
-barebones breakdown of getting sway running w/ seat management and dbus.
+This note covers how to get get sway running on Void Linux w/ seat management and dbus without using elogind.
 
-install information:
-- amd gpu
-- sway
+Install information:
+- AMD GPU
+- Sway
 - dbus
 - seatd
 
-# install seatd
+## Install seatd
 
 ```shell
 sudo xbps-install seatd
@@ -20,62 +19,62 @@ sudo ln -s /etc/sv/seatd /var/service
 sudo sv enable seatd
 ```
 
-# add user to appropriate groups
+## Add user to appropriate groups
 
 ```shell
 sudo usermod -aG _seatd,audio,video rj1
 ```
 
-# PAM module: pam_rundir
+## PAM module: pam_rundir
 
-on other operating systems leveraging systemd, the runtime directory is usually
-created/managed by systemd-logind. since void linux does not use systemd, we'll
+On other operating systems leveraging systemd, the runtime directory is usually
+created/managed by systemd-logind. Since Void Linux does not use systemd, we'll
 need to find another solution. I'd prefer not to use elogind, so the best
-solution I've come across is pam_rundir. we're already using PAM so why not let
-it manage our runtime directory as well? makes sense to me!
+solution I've come across is pam_rundir. We're already using PAM so why not let
+it manage our runtime directory as well? Makes sense to me!
 
-install pam_rundir module
+### Install pam_rundir module
 
 ```shell
 sudo xbps-install pam_rundir
 ```
 
-edit the file `/etc/pam.d/system-login`, adding:
+Edit the file `/etc/pam.d/system-login`, adding:
 
 `-session optional pam_rundir.so`
 
-now you don't need to worry about *XDG_RUNTIME_DIR* not being set!
+Now you don't need to worry about *XDG_RUNTIME_DIR* not being set!
 
 I've recently come across
 [dumb_runtime_dir](https://github.com/ifreund/dumb_runtime_dir) as well. I
 *think* the only difference is that it doesn't delete the directory on logout,
 while pam_rundir does.
 
-# dbus
+## dbus
 
-enable the dbus service
+### Enable the dbus service
 
 ```shell
 sudo ln -s /etc/sv/dbus /var/service
 sudo sv enable dbus
 ```
 
-# install software
+# Install software
 
 ```shell
 sudo xbps-install mesa-dri sway
 ```
-# launch script
+# Launch script
 
-at this point, you should logout and log back in to continue
+At this point, you should logout and log back in to continue
 
-you should now be able to simply launch sway by doing
+You should now be able to simply launch Sway by running:
 
 ```shell
 dbus-run-session sway
 ```
 
-but I like to set a fixed dbus session address. I created a launch script
+But I like to set a fixed dbus session address. I created a launch script
 called `startw` which consists of:
 
 ```shell
@@ -88,4 +87,4 @@ sway
 DBUS_SESSION_BUS_ADDRESS is set in my shell login profile already, but you
 could set it in this launch script if you wanted to.
 
-have fun!
+Have fun!

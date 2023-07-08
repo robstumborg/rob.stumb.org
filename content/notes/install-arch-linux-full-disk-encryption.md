@@ -1,10 +1,13 @@
 ---
-title: arch linux installation notes
+title: Arch Linux installation notes
 date: "2021-05-16"
 lastmod: "2022-12-05"
 ---
 
-install information:
+My notes on installing Arch Linux. These are very personalized (messy) notes and I wouldn't recommend following them
+step-by-step at this time.
+
+## install information:
 - systemd-boot
 - luks encryption
 - zen kernel

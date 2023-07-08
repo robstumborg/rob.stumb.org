@@ -1,35 +1,37 @@
 ---
-title: install + configure react native dev environment on arch linux
+title: React Native development environment on Arch Linux
 date: "2023-06-28"
 ---
 
-## install genymotion (optional: xwayland if using wayland)
+Quick notes on how I configure my React Native development environment on Arch Linux.
+
+## Install Genymotion (optional: xwayland if using wayland)
 
 ```sh
 paru -S genymotion 
 sudo pacman -S xorg-xwayland
 ```
 
-## install android sdk tools
+## Install Android SDK tools
 
 ```sh
 paru -S android-sdk-platform-tools android-sdk-cmdline-tools-latest
 ```
 
-## accept android sdk licenses
+## Accept Android SDK licenses
 
 ```sh
 yes | sudo sdkmanager --licenses
 ```
 
-## configure java environment
+## Configure Java environment
 
 ```sh
 sudo pacman -S jre11-openjdk
 archlinux-java set java-11-openjdk
 ```
 
-## useful commands
+## Useful commands
 
 ```sh
 QT_QPA_PLATFORM=xcb genymotion

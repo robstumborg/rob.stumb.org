@@ -1,52 +1,54 @@
 ---
-title: configure freebsd jails + nat
+title: Configure FreeBSD jails + NAT
 date: "2022-11-24"
 ---
 
-reference: https://docs.freebsd.org/en/books/handbook/jails/#jails-ezjail
+Simple configuration template for networked FreeBSD jails using a NAT.
 
-install ezjail
+Reference: https://docs.freebsd.org/en/books/handbook/jails/#jails-ezjail
+
+## Install ezjail
 
 ```shell
 pkg install ezjail
 ```
 
-edit rc.conf:
+## Edit rc.conf:
 
 ```
 ezjail_enable="YES"
 pf_enable="YES"
 ```
 
-start ezjail service
+## Start ezjail service
 
 ```shell
 service ezjail start
 ```
 
-generate jail template
+## Generate jail template
 
 ```shell
 ezjail-admin install -p
 cp /etc/resolv.conf /usr/jails/newjail/etc/
 ```
 
-edit rc.conf:
+## Edit rc.conf:
 
-```
+```shell
 cloned_interfaces="lo1"
 ipv4_addrs_lo1="10.0.0.1-9/29"
 ```
 
-restart network:
+## Restart network:
 
 ```shell
 service netif restart
 dhclient vtnet0
 ```
 
-edit pf.conf:
-```
+## Edit pf.conf:
+```shell
 # external ip
 EXTERNAL_IP="1.1.1.1"
 
@@ -67,16 +69,16 @@ rdr on vtnet0 proto tcp from any to $EXTERNAL_IP port 6969 -> 10.0.0.2
 rdr on vtnet0 proto tcp from any to $EXTERNAL_IP port 8080 -> 10.0.0.2
 ```
 
-start pf:
+## Start pf:
 
-```
+```shell
 service pf start
 ```
 
-create a jail:
+## Create a jail:
 
 ```shell
 ezjail-admin create http 10.0.0.1
 ```
 
-have fun!
+Have fun!
